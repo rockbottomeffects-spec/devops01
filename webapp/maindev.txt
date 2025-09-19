@@ -254,6 +254,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sample App - Gallery</title>
   <style>
@@ -319,6 +320,37 @@
       <p>This is a sample description for card 3.</p>
     </div>
   </section>
+
+<title>Mini To-Do</title>
+  <style>
+    body { font-family: Arial; background:#f2f2f2; text-align:center; padding:40px; }
+    h1 { color:#333; }
+    input { padding:8px; width:60%; }
+    button { padding:8px 12px; margin:5px; }
+    ul { list-style:none; padding:0; }
+    li { background:#fff; margin:5px 0; padding:10px; border-radius:5px; }
+    li.done { text-decoration:line-through; color:gray; }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  <input id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask(){
+      let input=document.getElementById("taskInput");
+      let text=input.value.trim();
+      if(text==="") return;
+      let li=document.createElement("li");
+      li.textContent=text;
+      li.onclick=()=>li.classList.toggle("done");
+      li.ondblclick=()=>li.remove();
+      document.getElementById("taskList").appendChild(li);
+      input.value="";
+    }
+  </script>
 </body>
 </html>
 
