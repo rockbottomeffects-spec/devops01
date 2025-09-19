@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- (1) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- (2) -->
+  <title>Counter App</title> <!-- (3) -->
+  <style>
+    /* ====== CSS Styles ====== */
+    body { /* (4) */
+      font-family: Arial, sans-serif; /* (5) */
+      background-color: #f4f4f9; /* (6) */
+      display: flex; /* (7) */
+      justify-content: center; /* (8) */
+      align-items: center; /* (9) */
+      height: 100vh; /* (10) */
+      margin: 0; /* (11) */
+    }
+    .container { /* (12) */
+      background: white; /* (13) */
+      padding: 30px; /* (14) */
+      border-radius: 10px; /* (15) */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* (16) */
+      text-align: center; /* (17) */
+      width: 300px; /* (18) */
+    }
+    h1 { /* (19) */
+      margin-bottom: 20px; /* (20) */
+      color: #333; /* (21) */
+    }
+    #counter { /* (22) */
+      font-size: 48px; /* (23) */
+      margin: 20px 0; /* (24) */
+      color: #4CAF50; /* (25) */
+    }
+    button { /* (26) */
+      padding: 10px 20px; /* (27) */
+      margin: 5px; /* (28) */
+      border: none; /* (29) */
+      border-radius: 5px; /* (30) */
+      font-size: 16px; /* (31) */
+      cursor: pointer; /* (32) */
+      transition: 0.3s; /* (33) */
+    }
+    .increase { background-color: #4CAF50; color: white; } /* (34) */
+    .decrease { background-color: #f44336; color: white; } /* (35) */
+    .reset { background-color: #008CBA; color: white; } /* (36) */
+    button:hover { opacity: 0.8; } /* (37) */
+  </style>
+</head>
+<body>
+  <div class="container"> <!-- (38) -->
+    <h1>Counter App</h1> <!-- (39) -->
+    <div id="counter">0</div> <!-- (40) -->
+    <button class="increase">Increase</button> <!-- (41) -->
+    <button class="decrease">Decrease</button> <!-- (42) -->
+    <button class="reset">Reset</button> <!-- (43) -->
+  </div> <!-- (44) -->
+
+  <script>
+    // ====== JavaScript ====== 
+    let count = 0; // (45)
+
+    // Get elements (46)
+    const counter = document.getElementById("counter"); // (47)
+    const increaseBtn = document.querySelector(".increase"); // (48)
+    const decreaseBtn = document.querySelector(".decrease"); // (49)
+    const resetBtn = document.querySelector(".reset"); // (50)
+
+    // Update counter function (51)
+    function updateCounter() { // (52)
+      counter.textContent = count; // (53)
+      if (count > 0) { // (54)
+        counter.style.color = "#4CAF50"; // (55)
+      } else if (count < 0) { // (56)
+        counter.style.color = "#f44336"; // (57)
+      } else { // (58)
+        counter.style.color = "#008CBA"; // (59)
+      }
+    }
+
+    // Increase button click (60)
+    increaseBtn.addEventListener("click", () => { // (61)
+      count++; // (62)
+      updateCounter(); // (63)
+    });
+
+    // Decrease button click (64)
+    decreaseBtn.addEventListener("click", () => { // (65)
+      count--; // (66)
+      updateCounter(); // (67)
+    });
+
+    // Reset button click (68)
+    resetBtn.addEventListener("click", () => { // (69)
+      count = 0; // (70)
+      updateCounter(); // (71)
+    });
+
+    // Initialize display (72)
+    updateCounter(); // (73)
+
+    // Extra: Keyboard shortcuts (74)
+    document.addEventListener("keydown", (e) => { // (75)
+      if (e.key === "ArrowUp") { // (76)
+        count++; // (77)
+      } else if (e.key === "ArrowDown") { // (78)
+        count--; // (79)
+      } else if (e.key === "0") { // (80)
+        count = 0; // (81)
+      }
+      updateCounter(); // (82)
+    });
+
+    // Extra: Double-click reset (83)
+    resetBtn.addEventListener("dblclick", () => { // (84)
+      count = 0; // (85)
+      alert("Counter reset to zero!"); // (86)
+      updateCounter(); // (87)
+    });
+
+    // Extra styling on load (88)
+    window.addEventListener("load", () => { // (89)
+      document.body.style.background = "linear-gradient(to right, #83a4d4, #b6fbff)"; // (90)
+    });
+
+    // Log actions (91)
+    function logAction(action) { // (92)
+      console.log(`Action: ${action}, Current Count: ${count}`); // (93)
+    }
+
+    // Add logs to each button (94)
+    increaseBtn.addEventListener("click", () => logAction("Increase")); // (95)
+    decreaseBtn.addEventListener("click", () => logAction("Decrease")); // (96)
+    resetBtn.addEventListener("click", () => logAction("Reset")); // (97)
+
+    // Example timeout (98)
+    setTimeout(() => console.log("Counter App Ready!"), 1000); // (99)
+  </script> <!-- (100) -->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample App - Contact</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #eef2f3;
+    }
+
+    .contact-section {
+      background: #fff;
+      padding: 40px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-section h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .contact-section label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .contact-section input,
+    .contact-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .contact-section button {
+      margin-top: 15px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contact-section button:hover {
+      background: #45a049;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .contact-section {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-section">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Your Name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Your Email">
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 Sample App. All rights reserved.</p>
+    <p>
+      <a href="#">Home</a> |
+      <a href="#">About</a> |
+      <a href="#">Contact</a>
+    </p>
+  </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample App - Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p {
+      margin: 10px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <section class="gallery">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Sample 1">
+      <h3>Card Title 1</h3>
+      <p>This is a sample description for card 1.</p>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Sample 2">
+      <h3>Card Title 2</h3>
+      <p>This is a sample description for card 2.</p>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/300x150" alt="Sample 3">
+      <h3>Card Title 3</h3>
+      <p>This is a sample description for card 3.</p>
+    </div>
+  </section>
+</body>
+</html>
+
